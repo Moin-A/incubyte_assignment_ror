@@ -4,19 +4,16 @@ require_relative 'base'
 module Calculator
   # this module inherits from base and is used to define the string calculator
   class StringCalculator < Base
-    attr_reader :test_string
+    attr_reader :input, :parsed_input_array
 
-    def initialize(string)
-      @test_string = string
-    end
+    def initialize(input)
+      super
+    end  
 
     def add
-      return 0 if test_string.empty?
-
-      numbers = test_string.split(/[\n,]/).map(&:to_i)
-      raise CalculationError, 'negatives not allowed' if numbers.any?(&:negative?)
-
-      numbers.sum
+      return 0 if @input.empty?
+      # raise CalculationError, 'negatives not allowed' if numbers.any?(&:negative?)
+      @parsed_input_array.sum
     end
   end
 end
