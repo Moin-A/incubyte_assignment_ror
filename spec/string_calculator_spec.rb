@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require 'pry-byebug'
 require_relative '../app/calculator'
 
 RSpec.describe Calculator::StringCalculator do
