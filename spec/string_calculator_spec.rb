@@ -49,8 +49,9 @@ RSpec.describe Calculator::StringCalculator do
   end
 
   context 'when the string contains multiple negative numbers with custom delimiters' do
-    let(:string) { ';1;-2;-3;3' }
+    let(:string) { ';1;-2;-8;3' }
     it 'throws an exception listing all negative numbers if multiple are provided' do
+      expect { calculator.add }.to raise_error(Calculator::CalculationError, 'negatives not allowed: -2, -8')
     end
   end
 end
