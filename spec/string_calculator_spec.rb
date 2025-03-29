@@ -41,7 +41,12 @@ RSpec.describe Calculator::StringCalculator do
     end
   end
 
-  it 'throws an exception when a negative number is provided' do
+  context 'when the string contains negative numbers' do
+    let(:string) { '1,-2,-3' }
+
+    it 'throws an exception when a negative number is provided' do
+      expect { calculator.add }.to raise_error(Calculator::CalculationError, 'negatives not allowed: -2, -3')
+    end
   end
 
   it 'throws an exception listing all negative numbers if multiple are provided' do
