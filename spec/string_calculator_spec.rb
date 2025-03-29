@@ -20,14 +20,25 @@ RSpec.describe Calculator::StringCalculator do
       expect(calculator.add).to eq(1)
     end
   end
-
-  it 'returns the sum of multiple numbers separated by commas' do
+  context 'when the string contains multiple numbers' do
+    let(:string) { '1,2,3' }
+    it 'returns the sum of multiple numbers separated by commas' do
+      expect(calculator.add).to eq(6)
+    end
   end
 
-  it 'handles new lines as delimiters along with commas' do
+  context 'when the string contains new lines as delimiters' do
+    let(:string) { "1\n2,3" }
+    it 'handles new lines as delimiters along with commas' do
+      expect(calculator.add).to eq(6)
+    end
   end
 
-  it 'supports custom delimiters specified at the beginning of the string' do
+  context 'supports custom delimiters specified at the beginning of the string' do
+    let(:string) { "//;\n1;2" }
+    it 'supports custom delimiters specified at the beginning of the string' do
+      expect(calculator.add).to eq(3)
+    end
   end
 
   it 'throws an exception when a negative number is provided' do
